@@ -1,0 +1,6 @@
+{
+  "name": "disneyland-js",
+  "dependencies": {
+    "exif": "~0.4.0"
+  }
+}
