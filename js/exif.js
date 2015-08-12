@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
   var R = 6371;
   var a =
@@ -29,28 +31,12 @@ function numSort(a, b) {
 }
 var ExifImage = require('exif').ExifImage;
 var names = [];
-var attractions = {
-  "rides": [{
-    "lat": 33.812046,
-    "long": -117.917891,
-    "name": "Star Tours"
-  }, {
-    "name": "Pirates Of The Carribean",
-    "lat": 33.811239,
-    "long": -117.920804
-  }, {
-    "name": "The Many Adventures of Winnie The Pooh",
-    "lat": 33.812425,
-    "long": -117.922940
-  }, {
-    "name": "The Haunted Mansion",
-    "lat": 33.811741,
-    "long": -117.922113
-  }]
-};
 
-var fs = require('fs');
+
+
 var dist = [];
+var attractions = JSON.parse(fs.readFileSync('data/disneyland-rides.json',
+  'utf8'));
 new ExifImage({
   image: 'tests/pooh.JPG'
 }, function(error, exifData) {
