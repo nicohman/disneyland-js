@@ -2,18 +2,27 @@
   "rides": [{
     "lat": 33.812046,
     "long": -117.917891,
-    "name": "Star Tours"
+    "name": "Star Tours",
+    "land": "Tomorrowland"
   }, {
     "name": "Pirates Of The Carribean",
     "lat": 33.811239,
-    "long": -117.920804
+    "long": -117.920804,
+    "land": "New Orleans Square"
   }, {
     "name": "The Many Adventures of Winnie The Pooh",
     "lat": 33.812425,
-    "long": -117.922940
+    "long": -117.922940,
+    "land": "Critter Country"
   }, {
     "name": "The Haunted Mansion",
     "lat": 33.811741,
-    "long": -117.922113
+    "long": -117.922113,
+    "land": "New Orleans Square"
+  }, {
+    "name": "Snow White's Scary Adventures",
+    "lat": 33.813129,
+    "long": -117.919065,
+    "land": "Fantasyland"
   }]
 }

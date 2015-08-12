@@ -16,7 +16,7 @@ function ConvertDMSToDD(degrees, minutes, seconds, direction) {
 
   if (direction == "S" || direction == "W") {
     dd = dd * -1;
-  } // Don't do anything for N or E
+  }
   return dd;
 }
 
@@ -41,7 +41,6 @@ module.exports.parser = function(photo, callback) {
     if (error) {
       console.log('Error: ' + error.message);
     } else {
-      //  console.log(exifData);
       attractions.rides.forEach(function(val, index, arr) {
         dist[dist.length] = getDistanceFromLatLon(val.lat, val.long,
           ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[
@@ -53,21 +52,17 @@ module.exports.parser = function(photo, callback) {
         );
         names[names.length] = {
           name: val.name,
-          dist: dist[dist.length - 1]
+          dist: dist[dist.length - 1],
+          land: val.land
         };
-        //  console.log(dist);
       });
       dist = dist.sort(numSort);
-      //console.log(dist);
       names.forEach(function(val, index, arr) {
-        //console.log(val.name);
         if (val.dist === dist[0]) {
           attraction = val;
           callback(val);
-          //console.log(val.name.toUpperCase());
         }
       });
-      //    console.log(attraction.name);
     }
   });
 };
