@@ -31,41 +31,43 @@ function numSort(a, b) {
 }
 var ExifImage = require('exif').ExifImage;
 var names = [];
-
-
-
 var dist = [];
 var attractions = JSON.parse(fs.readFileSync('data/disneyland-rides.json',
   'utf8'));
-new ExifImage({
-  image: 'tests/pooh.JPG'
-}, function(error, exifData) {
-  if (error) {
-    console.log('Error: ' + error.message);
-  } else {
-    console.log(exifData);
-    attractions.rides.forEach(function(val, index, arr) {
-      dist[dist.length] = getDistanceFromLatLon(val.lat, val.long,
-        ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[
-          1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),
-        ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps.GPSLongitude[
-          1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef)
-      );
-      names[names.length] = {
-        name: val.name,
-        dist: dist[dist.length - 1]
-      };
-      console.log(dist);
-    });
-    dist = dist.sort(numSort);
-    console.log(dist);
-    names.forEach(function(val, index, arr) {
-      console.log(val.name);
-      if (val.dist === dist[0]) {
-        attraction = val;
-        console.log(val.name.toUpperCase());
-      }
-    });
-    //    console.log(attraction.name);
-  }
-});
+module.exports.parser = function(photo, callback) {
+  new ExifImage({
+    image: photo
+  }, function(error, exifData) {
+    if (error) {
+      console.log('Error: ' + error.message);
+    } else {
+      //  console.log(exifData);
+      attractions.rides.forEach(function(val, index, arr) {
+        dist[dist.length] = getDistanceFromLatLon(val.lat, val.long,
+          ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[
+            1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),
+          ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps
+            .GPSLongitude[
+              1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef
+          )
+        );
+        names[names.length] = {
+          name: val.name,
+          dist: dist[dist.length - 1]
+        };
+        //  console.log(dist);
+      });
+      dist = dist.sort(numSort);
+      //console.log(dist);
+      names.forEach(function(val, index, arr) {
+        //console.log(val.name);
+        if (val.dist === dist[0]) {
+          attraction = val;
+          callback(val);
+          //console.log(val.name.toUpperCase());
+        }
+      });
+      //    console.log(attraction.name);
+    }
+  });
+};
