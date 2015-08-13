@@ -1,1 +1,93 @@
-{"rides":[{"lat":33.812046,"long":-117.917891,"name":"Star Tours","land":"Tomorrowland"},{"name":"Pirates Of The Carribean","lat":33.811239,"long":-117.920804,"land":"New Orleans Square"},{"name":"The Many Adventures of Winnie The Pooh","lat":33.812425,"long":-117.92294,"land":"Critter Country"},{"name":"The Haunted Mansion","lat":33.811741,"long":-117.922113,"land":"New Orleans Square"},{"name":"Snow White's Scary Adventures","lat":33.813129,"long":-117.919065,"land":"Fantasyland"},{"name":"Mr. Toad's Wild Ride","lat":33.813318,"long":-117.9187,"land":"Fantasyland"},{"name":"Big Thunder Mountain Railroad","lat":33.813135,"long":-117.920547,"land":"Frontierland"}]}
+{
+  "rides": [{
+    "lat": 33.812046,
+    "long": -117.917891,
+    "name": "Star Tours",
+    "land": "Tomorrowland"
+  }, {
+    "name": "Pirates Of The Carribean",
+    "lat": 33.811239,
+    "long": -117.920804,
+    "land": "New Orleans Square"
+  }, {
+    "name": "The Many Adventures of Winnie The Pooh",
+    "lat": 33.812425,
+    "long": -117.92294,
+    "land": "Critter Country"
+  }, {
+    "name": "The Haunted Mansion",
+    "lat": 33.811741,
+    "long": -117.922113,
+    "land": "New Orleans Square"
+  }, {
+    "name": "Snow White's Scary Adventures",
+    "lat": 33.813129,
+    "long": -117.919065,
+    "land": "Fantasyland"
+  }, {
+    "name": "Mr. Toad's Wild Ride",
+    "lat": 33.813318,
+    "long": -117.9187,
+    "land": "Fantasyland"
+  }, {
+    "name": "Big Thunder Mountain Railroad",
+    "lat": 33.813135,
+    "long": -117.920547,
+    "land": "Frontierland"
+  }, {
+    "name": "Matterhorn Bobsleds",
+    "lat": 33.813068,
+    "long": -117.917814,
+    "land": "Fantasyland"
+  }, {
+    "name": "Peter Pan's Flight",
+    "lat": 33.813087,
+    "long": -117.918699,
+    "land": "Fantasyland"
+  }, {
+    "name": "The Jungle Cruise",
+    "lat": 33.811412,
+    "long": -117.9201,
+    "land": "Adventureland"
+  }, {
+    "name": "Indiana Jones and the Temple of the Forbidden Eye",
+    "lat": 33.811359,
+    "long": -117.920298,
+    "land": "Adventureland"
+  }, {
+    "name": "Splash Mountain",
+    "lat": 33.812098,
+    "long": -117.922531,
+    "land": "Critter Country"
+  }, {
+    "name": "It's a Small World",
+    "lat": 33.814651,
+    "long": -117.917842,
+    "land": "Fantasyland"
+  }, {
+    "name": "Roger Rabbit's Car Toon Spin",
+    "lat": 33.814651,
+    "long": -117.917842,
+    "land": "Toontown"
+  }, {
+    "name": "Space Mountain",
+    "lat": 33.810986,
+    "long": -117.917496,
+    "land": "Tomorrowland"
+  }, {
+    "name": "King Arthur's Carrousel",
+    "lat": 33.813396,
+    "long": -117.918955,
+    "land": "Fasntasyland"
+  }, {
+    "name": "Autotopia",
+    "lat": 33.812671,
+    "long": -117.916508,
+    "land": "Tomorrowland"
+  }, {
+    "name": "Casey Jr. Circus Train",
+    "lat": 33.813705,
+    "long": -117.919191,
+    "land": "Fantasyland"
+  }]
+}
