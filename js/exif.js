@@ -1,4 +1,5 @@
 var fs = require('fs');
+var ExifImage = require('exif').ExifImage;
 
 function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
   var R = 6371;
@@ -19,50 +20,41 @@ function ConvertDMSToDD(degrees, minutes, seconds, direction) {
   }
   return dd;
 }
-
-function numSort(a, b) {
-  if (a < b) {
-    return -1;
-  }
-  if (a > b) {
-    return 1;
-  }
-  return 0;
-}
-var ExifImage = require('exif').ExifImage;
-var names = [];
-var dist = [];
 var attractions = JSON.parse(fs.readFileSync('data/disneyland-rides.json',
   'utf8'));
 module.exports.parser = function(photo, callback) {
+  var attraction = {
+    "name": "",
+    "dist": undefined,
+    "land": ""
+  };
   new ExifImage({
     image: photo
-  }, function(error, exifData) {
-    if (error) {
-      console.log('Error: ' + error.message);
-    } else {
-      attractions.rides.forEach(function(val, index, arr) {
-        dist[dist.length] = getDistanceFromLatLon(val.lat, val.long,
-          ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[
-            1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),
-          ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps
-            .GPSLongitude[
-              1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef
-          )
-        );
-        names[names.length] = {
-          name: val.name,
-          dist: dist[dist.length - 1],
-          land: val.land
-        };
-      });
-      dist = dist.sort(numSort);
-      names.forEach(function(val, index, arr) {
-        if (val.dist === dist[0]) {
-          attraction = val;
-          callback(val);
-        }
-      });
+  }, function(err, exifData) {
+    if (err) {
+      console.log('Error: ' + err.message);
+      return callback(err);
     }
+    attractions.rides.forEach(function(val, index, arr) {
+      curDist = getDistanceFromLatLon(val.lat, val.long,
+        ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[
+          1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),
+        ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps
+          .GPSLongitude[1], exifData.gps.GPSLongitude[2], exifData.gps
+          .GPSLongitudeRef
+        )
+      );
+      if (attraction.dist > curDist || attraction.dist === null ||
+        attraction.dist === undefined) {
+        attraction = {
+          'name': val.name,
+          'dist': curDist,
+          'land': val.land
+        };
+      }
+
+
+    });
+    callback(attraction);
   });
 };
