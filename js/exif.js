@@ -52,8 +52,6 @@ module.exports.parser = function(photo, callback) {
           'land': val.land
         };
       }
-
-
     });
     callback(attraction);
   });
