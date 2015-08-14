@@ -26,6 +26,9 @@ var loop = function() {
             toWrite;
           fs.writeFile('data/disneyland-rides.json', JSON.stringify(
             attractions), function(err) {
+            if (err) {
+              console.log(err.toString());
+            }
             console.log('Restarting');
             loop();
           });
