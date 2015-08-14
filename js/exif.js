@@ -14,7 +14,6 @@ var attraction;
 
 function ConvertDMSToDD(degrees, minutes, seconds, direction) {
   var dd = degrees + minutes / 60 + seconds / (60 * 60);
-
   if (direction == "S" || direction == "W") {
     dd = dd * -1;
   }
@@ -41,8 +40,7 @@ module.exports.parser = function(photo, callback) {
           1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),
         ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps
           .GPSLongitude[1], exifData.gps.GPSLongitude[2], exifData.gps
-          .GPSLongitudeRef
-        )
+          .GPSLongitudeRef)
       );
       if (attraction.dist > curDist || attraction.dist === null ||
         attraction.dist === undefined) {
